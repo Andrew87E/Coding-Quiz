@@ -31,14 +31,28 @@
     color: white;
 }
 
-#question {
+#quiz {
     height: 800px;
     width: 100%;
+    display:block;
+    margin-top: 20px;
 }
 
 .answer-this {
     min-height: 300px;
-    width: 100%;
+    width: 100%; 
+    margin: 25%;  
+
+}
+
+#question {
+    color: #48ff00;
+    width: fit-content;
+    height: fit-content;
+    font-weight: 450;
+    font-size: 50px;
+    font-family: monospace; 
+    margin-top: 85px;
 }
 
 .start{
@@ -53,7 +67,7 @@
     margin-left: 260px;    
 }
 
-  span{
+  .startbtn{
     display: inline;
     line-height: 20px;
     width: 100%;
@@ -69,7 +83,7 @@
     color: #000;
 }
 
-  span:hover{
+  .startbtn:hover{
     transition: 0.3s;
     opacity: 1;
     font-weight: 700;
@@ -94,6 +108,7 @@
     z-index: 0;
     border-radius: 10px;
     margin: 30px;
+    display: block;
 }
 
 .button:before {
