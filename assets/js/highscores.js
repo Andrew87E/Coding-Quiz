@@ -1,5 +1,5 @@
 //store some high scores here
-import {scores} from './script.js';
+import {scores} from './script.js'; //gotta change this? 
 
 var scoreboard = document.querySelector(".scores")
 

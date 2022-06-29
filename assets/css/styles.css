@@ -16,6 +16,11 @@
     line-height: 10px;
 }
 
+.score {
+    color: #48ff00;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
 .head a {
     margin-left: 10px;
     position: relative;
