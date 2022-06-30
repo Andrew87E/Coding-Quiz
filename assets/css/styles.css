@@ -16,6 +16,13 @@
     line-height: 10px;
 }
 
+.brattney {
+    color: #48ff00;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    align-content: center;
+    margin-bottom: 200px;
+}
+
 .score {
     color: #48ff00;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
