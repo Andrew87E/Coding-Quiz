@@ -5,8 +5,12 @@ var brattney = $('.brattney')
 var startBtn = $('.start');
 var answerBtns = $('.button');
 var scoreArea = $('.score');
+var inputEl = ('#input')
 var timeLeft = 15;
 var answer;
+var correctCount = 0;
+var incorrectCount = 0;
+var userName = $('#input').text;
 var userAnswer;
 var questCount = 0;
 var choices = [];
@@ -36,7 +40,7 @@ var quest5 = {
     question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     choices: ["JavaScript", "terminal / bash", "for loops", "console.log"]
 };
-var answers = ["alerts", "parentheses", "all of the above", "quotes", "console.log"]
+var answers = ["alerts", "parentheses", "all of the above", "quotes", "console.log"];
 var scores = {
     userName: [],
     highScore: []
@@ -45,6 +49,7 @@ var choices;
 var questions = [quest1, quest2, quest3, quest4, quest5];
 
 $('.button').hide();
+$('#input').hide();
 
 function makeChoices() {
 if (questCount < questions.length) {
@@ -56,18 +61,29 @@ function shuffleChoices(array) {
     while (currentIndex != 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-        [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+        [array[currentIndex], array[randomIndex]] = 
+        [array[randomIndex], array[currentIndex]];
 }};
 
-function quest(questCount) {
-if (questCount > (questions.length-1)){
-    questCount === 0
-}};
+console.log(questCount)
+
+function answerCheck() {
+    console.log(userAnswer);
+    if(userAnswer == answers[questCount]) {
+        score = score + 5
+        correctCount++
+    }else if (userAnswer !== answers[questCount]){
+        timeLeft -= 5;
+        incorrectCount++
+}
+ questCount++;
+ console.log(score)
+}
 
 function startQuiz () {
     makeChoices();
     shuffleChoices(choices);
+    $('.start').hide(800)
     $('.button').show(1000);
     $('#question').text(questions[questCount].question);
     $('.answer1').text(choices[0]);
@@ -75,44 +91,44 @@ function startQuiz () {
     $('.answer3').text(choices[2]);
     $('.answer4').text(choices[3]);
 };
-$('.score').text("Your Score " + score);
 
 $('.button').on('click', function(){
     console.log("answer button works");
     userAnswer = $(this).text();
-    questCount++;
-    quest(questCount);
+    answerCheck();
+    console.log(questCount);
     startQuiz();
-    console.log(quest)
-    console.log(questCount)
-    for(let i = 0; i < answers.length; i++) {
-        if(userAnswer[0, 1, 2, 3 ,4].indexOf(answers)) {
-            score = score + 5
-            break;
-        }else if (userAnswer !== answers[i]){
-            youGotThatShitWrong()
-            break;
-        }
-}});
+    $('.score').text("Your Score " + score);
+});
 
-function youGotThatShitWrong() {
-    timeLeft -= 5;
-    console.log("yougotthatshitwrong")
-}
+$('#input').keypress(function(event){
+    if(event.key === 'Enter') {
+        if(userName === ' ' || userName === null){
+            window.alert('Please enter your initials. Press enter when finished.')
+        } else {
+            userName = (this).value;
+        localStorage.setItem('userName', userName);
+        localStorage.setItem('score', score);
+        console.log(userName);
+        console.log(score);
+}}});
 
-function playAgain() {
-    
-}
 
 function endTest () {
-    questionEl.hide();
-    answerBtns.hide();
+    answerBtns.hide(800);
     startBtn.text("Try Again")
-    brattney.text('Would you like to try again? Because my wife told me to.')
-    brattney.show();
-    playAgain();
+    brattney.text('Your score was ' + score + '! ' + ' Would you like to try again?')
+    brattney.show(800);
+    $('#input').show(800);
     questCount = 0;
+    $('.start').show(800)
+    scoreBoard();
 }; 
+
+function scoreBoard() {
+    questionEl.text('Enter your initials to save your score!');
+    questionEl.append(makeInput)
+};
 
 function timer() {
     var timerInterval = setInterval(function() {
@@ -123,6 +139,7 @@ function timer() {
             timeLeft = 0;
             $('#timer').text("Good Job!");
             endTest();
+            questCount = 0;
         }
         }, 1000);
 };
@@ -135,4 +152,14 @@ startBtn.on('click', function(){
     brattney.hide()
     questCount = 0;
     questionEl.show()
+    $('#input').hide();
 });
+
+
+
+
+/*
+TO-DO
+randomize question order
+store high scores server side
+*/
