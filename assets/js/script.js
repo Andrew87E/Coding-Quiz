@@ -1,3 +1,4 @@
+//variables to be used later
 var questionEl = $('#question');
 var rootEl = $('.quiz');
 var timeText = $('#timer');
@@ -6,21 +7,27 @@ var startBtn = $('.start');
 var answerBtns = $('.button');
 var scoreArea = $('.score');
 var inputEl = ('#input')
-var timeLeft = 15;
+//starting time
+var timeLeft = 60;
 var answer;
 var correctCount = 0;
 var incorrectCount = 0;
 var userName = $('#input').text;
 var userAnswer;
+//counter to keep track of what question youre on
 var questCount = 0;
+//empty array to store answers for questions
 var choices = [];
+//final score var
 var score = 0;
+//vars to hold quesitons and answers
+
 var quest1 = { 
-    question: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "numbers","alerts"]
+    question: "Inside which HTML element do we put the JavaScript?",
+    choices: ["<js>", "<scripting>", "<script>","<javascript>"]
 };
 var quest2 = { 
-    question: "The condition in an if / else statement is enclosed within .",
+    question: "What is the correct ",
     choices: ["quotes", "curly brackets", "square brackets", "parentheses"]
 };
 var quest3 = {
@@ -46,16 +53,18 @@ var scores = {
     highScore: []
 };
 var choices;
+// array to hold all questions need to combine******
 var questions = [quest1, quest2, quest3, quest4, quest5];
-
+//hide elements not being used yet
 $('.button').hide();
 $('#input').hide();
-
+questionEl.hide();
+//func to select a question and pull the choices from
 function makeChoices() {
 if (questCount < questions.length) {
     choices = questions[questCount].choices
 }};
-
+//shuffle the order of the choices so theyre not the same whenretaking the quiz
 function shuffleChoices(array) {
     let currentIndex = array.length,  randomIndex;
     while (currentIndex != 0) {
@@ -64,11 +73,8 @@ function shuffleChoices(array) {
         [array[currentIndex], array[randomIndex]] = 
         [array[randomIndex], array[currentIndex]];
 }};
-
-console.log(questCount)
-
+//check the user input against the array of answers using question counter
 function answerCheck() {
-    console.log(userAnswer);
     if(userAnswer == answers[questCount]) {
         score = score + 5
         correctCount++
@@ -77,13 +83,12 @@ function answerCheck() {
         incorrectCount++
 }
  questCount++;
- console.log(score)
 }
-
+// main quiz start and next question function
 function startQuiz () {
     makeChoices();
     shuffleChoices(choices);
-    $('.start').hide(800)
+    $('.start').hide(800);
     $('.button').show(1000);
     $('#question').text(questions[questCount].question);
     $('.answer1').text(choices[0]);
@@ -91,16 +96,17 @@ function startQuiz () {
     $('.answer3').text(choices[2]);
     $('.answer4').text(choices[3]);
 };
-
+// listener takes the value of the button and checks it in the answer check func 
+// also updates score on click
 $('.button').on('click', function(){
-    console.log("answer button works");
     userAnswer = $(this).text();
     answerCheck();
-    console.log(questCount);
     startQuiz();
-    $('.score').text("Your Score " + score);
-});
-
+    scoreArea.text("Your Score : " + score);
+    if(questCount === 4) {
+        endTest();
+}});
+// listener to store user initials and score in local storage
 $('#input').keypress(function(event){
     if(event.key === 'Enter') {
         if(userName === ' ' || userName === null){
@@ -109,27 +115,27 @@ $('#input').keypress(function(event){
             userName = (this).value;
         localStorage.setItem('userName', userName);
         localStorage.setItem('score', score);
-        console.log(userName);
-        console.log(score);
-}}});
-
-
+        }
+}});
+//function runs at the end of the test
+// hides answer butttons adds element to anounce end of test and final score
+// brings up an input to enter initials
 function endTest () {
     answerBtns.hide(800);
     startBtn.text("Try Again")
-    brattney.text('Your score was ' + score + '! ' + ' Would you like to try again?')
+    brattney.text(
+        'Your score was ' + score + '! ' + 
+        ' You got ' + correctCount + ' right and ' + incorrectCount + ' wrong!' + 
+        ' Would you like to try again?');
     brattney.show(800);
     $('#input').show(800);
     questCount = 0;
     $('.start').show(800)
-    scoreBoard();
-}; 
-
-function scoreBoard() {
     questionEl.text('Enter your initials to save your score!');
-    questionEl.append(makeInput)
-};
-
+    // questionEl.append(makeInput)
+}; 
+// main timer function controls the timer
+//ends test on timer end
 function timer() {
     var timerInterval = setInterval(function() {
         timeLeft--;
@@ -143,16 +149,18 @@ function timer() {
         }
         }, 1000);
 };
-
+//listener to run funcs on start button press
+// starts game and hides itself
+// also serves as try again button 
 startBtn.on('click', function(){
     startQuiz();
     timer();
-    console.log('on click works')
-    timeLeft = 30;
+    timeLeft = 60;
     brattney.hide()
     questCount = 0;
     questionEl.show()
     $('#input').hide();
+    scoreArea.text("Your Score : " + score);
 });
 
 
@@ -161,5 +169,4 @@ startBtn.on('click', function(){
 /*
 TO-DO
 randomize question order
-store high scores server side
 */

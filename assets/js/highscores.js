@@ -1,56 +1,50 @@
 //store some high scores here
 var listEl = ('.scores')
+var tableEl = $('#floor')
 var defaultScores = [];
+var emptyScores = [];
 var defaultNames = [];
-updateLeaderboardView();
-// function makeCurrent () {
-//     getScores();
-//     currentUser = [userName, score];
-// }
+var currentUser = localStorage.getItem('userName');
+var currentScore = localStorage.getItem('score');
+var allScores = [
+    {
+        place: 0,
+        user: 'General Kenobi',
+        score: 40
+    },
+    {
+        place: 0,
+        user: 'General Grievous',
+        score: 35
+    },
+    {
+        place: 0,
+        user: 'Roger Roger',
+        score: 30
+    },
+    {
+        place: 0,
+        user: 'Dooku',
+        score: 12
+    },
+    {
+        place: 0,
+        user: currentUser,
+        score: currentScore,
+    }  
+];
 
-// function getScores(){
-//     return localStorage.getItem(userName, score);
-// }
-
-function updateLeaderboardView() {
-    let currentUser = localStorage.getItem('userName')
-    let currentScore = localStorage.getItem('score')
-    console.log(currentUser)
-    console.log(currentScore)
-
-    let tableRow = $('<tr>','<td>', currentUser, '</td>','<td>', currentScore, '</tr>');
-    let tabEl = $('#floor')
-    tabEl.append(tableRow);
+for (i = 0; i < allScores.length; i++){
+    tableEl.append('<tr>' + '<td>' + allScores[i].place + '</td>' + '<td>' + allScores[i].user + '</td>' + '<td>' + allScores[i].score + '</td>' + '</tr>')
 };
 
-
-
-function generateLeaderboard() {
-    playerArray.sort(sortDec)
-    
-
-}
-
-
-
-
-
-
-// for(i = 0; i <playerArray.length; i++) {
-//     if (currentUser[1] > playerArray.score) {
-
-//     }
-// }
-
-
-
-
-
-
-//for loop to checkhigh scores
-//order scores big to small
-//func print to score list
-
-//store scores.name
-//print scores.highscore
-
+// for (i = 0; i < allScores.length; i++){
+// allScores.sort(function (a, b) {
+//     if (a.score > b.score){
+//         emptyScores.unshift[allScores];
+//     } else {
+//         emptyScores.push[allScores];
+//     };
+//     console.log(emptyScores)
+// });
+// };

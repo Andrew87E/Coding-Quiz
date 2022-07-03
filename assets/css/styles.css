@@ -1,3 +1,8 @@
+:root {
+    --black: #1D1B26
+    --neon: 
+}
+
 * {
     background-color: black;
     color: #fff;

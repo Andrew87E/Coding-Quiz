@@ -1,5 +1,6 @@
+// original js written in vanilla js
+//kept for posterity 
 var scoreboard;
-
 var questionArea = document.querySelector("#question")
 var timeText = document.querySelector("#timer")
 var startButton = document.querySelector(".start")
