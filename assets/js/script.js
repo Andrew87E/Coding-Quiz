@@ -27,38 +27,53 @@ var quest1 = {
     choices: ["<js>", "<scripting>", "<script>","<javascript>"]
 };
 var quest2 = { 
-    question: "What is the correct ",
-    choices: ["quotes", "curly brackets", "square brackets", "parentheses"]
+    question: '"What is the correct JS syntax to change the content of the HTML element below? " " <p id="demo">This is a demonstration.</p>"',
+    choices: ['"document.getElementByName("p").innerHTML = "Hello World!";', 'document.getElement("p").innerHTML = "Hello World!";', '#demo.innerHTML - "Hello World!";', 'document.getElementByld("demo").innerHTML "Hello World!";']
 };
 var quest3 = {
-    question: "Arrays in JavaScript can be used to store .",
+    question: "Where is the correct place to insert a JavaScript?",
     choices: [
-      "numbers and strings",
-      "other arrays",
-      "booleans",
-      "all of the above"
+      "The <head> section",
+      "The <body> section",
+      "The <footer> section",
+      "Both the <head> section and the <body> section are correct"
     ]
 };
 var quest4 = { 
-    question: "String values must be enclosed within __ when being assigned to variables.",
-    choices: ["commas", "curly brackets", "parentheses", "quotes"]
+    question: 'What is the correct syntax for referring to an external script called "xxx.js"?',
+    choices: ['<script name="xxx.js">', '<script src="xxx.js">', '<script href="xxx.js">', '<script id= "xxx.js">']
 };
 var quest5 = { 
-    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    choices: ["JavaScript", "terminal / bash", "for loops", "console.log"]
+    question: 'How to write an IF statement for executing some code if "i" is NOT equal to 5?',
+    choices: ['if (i != 5)', 'if (i <> 5)', 'if (i =! 5) then ',  'if i <> 5']
 };
-var answers = ["alerts", "parentheses", "all of the above", "quotes", "console.log"];
+var quest6 = { 
+    question: 'How do you write "Hello World" in an alert box?',
+    choices: ['msgBox("Hello World");', 'msg("Hello World");', 'alertBox("Hello World ");',  'alert("Hello World");']
+};
+var quest7 = { 
+    question: 'How does a FOR loop start?',
+    choices: ['for (i = 0; i <= 5)', 'for (i <= 5; i++)', 'for i = 1to5',  'for (i=0; i <= 5; i++)']
+};
+var quest8 = { 
+    question: 'How do you write a comment in JS?',
+    choices: ['//This is a comment', '`This is a comment`', '<--This is a comment-->',  '~This is a comment']
+};
+var quest9 = { 
+    question: 'How do you write an IF statement in JS?',
+    choices: ['if i = 5 then', 'if i == 5 then', 'if i = 5',  'if (i == 5)']
+};
 var scores = {
     userName: [],
     highScore: []
 };
 var choices;
 // array to hold all questions need to combine******
-var questions = [quest1, quest2, quest3, quest4, quest5];
+var questions = [quest1, quest2, quest3, quest4, quest5, quest6, quest7, quest8, quest9];
 //hide elements not being used yet
 $('.button').hide();
 $('#input').hide();
-questionEl.hide();
+questionEl.text('Click the button to start!');
 //func to select a question and pull the choices from
 function makeChoices() {
 if (questCount < questions.length) {
@@ -83,7 +98,7 @@ function answerCheck() {
         incorrectCount++
 }
  questCount++;
-}
+};
 // main quiz start and next question function
 function startQuiz () {
     makeChoices();
@@ -103,9 +118,11 @@ $('.button').on('click', function(){
     answerCheck();
     startQuiz();
     scoreArea.text("Your Score : " + score);
-    if(questCount === 4) {
+    if(questCount === 8) {
         endTest();
 }});
+//answer array to check against
+var answers = ["<script>", 'document.getElementByld("demo").innerHTML "Hello World!";', 'Both the <head> section and the <body> section are correct', '<script src="xxx.js">', 'if (i != 5)', 'alert("Hello World");', 'for (i=0; i <= 5; i++)', '//This is a comment', 'if (i == 5)'];
 // listener to store user initials and score in local storage
 $('#input').keypress(function(event){
     if(event.key === 'Enter') {
@@ -132,7 +149,7 @@ function endTest () {
     questCount = 0;
     $('.start').show(800)
     questionEl.text('Enter your initials to save your score!');
-    // questionEl.append(makeInput)
+    timeLeft = 0;
 }; 
 // main timer function controls the timer
 //ends test on timer end
@@ -162,11 +179,3 @@ startBtn.on('click', function(){
     $('#input').hide();
     scoreArea.text("Your Score : " + score);
 });
-
-
-
-
-/*
-TO-DO
-randomize question order
-*/

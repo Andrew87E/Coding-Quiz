@@ -8,27 +8,27 @@ var currentUser = localStorage.getItem('userName');
 var currentScore = localStorage.getItem('score');
 var allScores = [
     {
-        place: 0,
+        place: 1,
         user: 'General Kenobi',
-        score: 40
+        score: 400
     },
     {
-        place: 0,
+        place: 2,
         user: 'General Grievous',
-        score: 35
+        score: 350
     },
     {
-        place: 0,
-        user: 'Roger Roger',
-        score: 30
+        place: 3,
+        user: 'Wedge Antilles',
+        score: 300
     },
     {
-        place: 0,
-        user: 'Dooku',
-        score: 12
+        place: 4,
+        user: 'Grand Admiral Thrawn',
+        score: 120
     },
     {
-        place: 0,
+        place: 5,
         user: currentUser,
         score: currentScore,
     }  

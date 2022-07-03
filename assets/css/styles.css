@@ -108,7 +108,7 @@
 
 #question {
     color: #48ff00;
-    width: fit-content;
+    width: 400px;
     height: fit-content;
     font-weight: 450;
     font-size: 50px;
@@ -219,10 +219,11 @@
     background-color: #000;
     color: #48ff00;
     width: 100px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     border: solid;
     border-color:#00ffd5;
     margin-left: 200px;
+    margin-top: 20px;
 }
 
 .score-here {
