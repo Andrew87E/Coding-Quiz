@@ -2,6 +2,10 @@
     --black: #1D1B26
     --neon: 
 }
+/* font-family: 'Domine', serif;
+font-family: 'Fira Sans Condensed', sans-serif;
+font-family: 'Lobster', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Domine&family=Fira+Sans+Condensed:wght@300&family=Lobster&display=swap');
 
 * {
     background-color: black;
