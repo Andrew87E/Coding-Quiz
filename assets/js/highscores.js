@@ -8,43 +8,37 @@ var currentUser = localStorage.getItem('userName');
 var currentScore = localStorage.getItem('score');
 var allScores = [
     {
-        place: 1,
+        place: 0,
         user: 'General Kenobi',
-        score: 400
+        score: 40
     },
     {
-        place: 2,
+        place: 0,
         user: 'General Grievous',
-        score: 350
+        score: 30
     },
     {
-        place: 3,
+        place: 0,
         user: 'Wedge Antilles',
-        score: 300
+        score: 20
     },
     {
-        place: 4,
+        place: 0,
         user: 'Grand Admiral Thrawn',
-        score: 120
+        score: 5
     },
     {
-        place: 5,
+        place: 0,
         user: currentUser,
         score: currentScore,
-    }  
+    }
 ];
 
-for (i = 0; i < allScores.length; i++){
-    tableEl.append('<tr>' + '<td>' + allScores[i].place + '</td>' + '<td>' + allScores[i].user + '</td>' + '<td>' + allScores[i].score + '</td>' + '</tr>')
+var sorted = allScores.sort((a, b) => b.score - a.score)
+for (i = 0; i < sorted.length; i++) {
+    sorted[i].place = i + 1;
 };
 
-// for (i = 0; i < allScores.length; i++){
-// allScores.sort(function (a, b) {
-//     if (a.score > b.score){
-//         emptyScores.unshift[allScores];
-//     } else {
-//         emptyScores.push[allScores];
-//     };
-//     console.log(emptyScores)
-// });
-// };
+for (i = 0; i < allScores.length; i++) {
+    tableEl.append('<tr>' + '<td>' + sorted[i].place + '</td>' + '<td>' + sorted[i].user + '</td>' + '<td>' + sorted[i].score + '</td>' + '</tr>')
+};
