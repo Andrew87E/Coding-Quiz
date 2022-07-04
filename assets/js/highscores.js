@@ -33,12 +33,12 @@ var allScores = [
         score: currentScore,
     }
 ];
-
+// loop to sort the array of scores
 var sorted = allScores.sort((a, b) => b.score - a.score)
 for (i = 0; i < sorted.length; i++) {
     sorted[i].place = i + 1;
 };
-
+// loop to add the scores to the table
 for (i = 0; i < allScores.length; i++) {
     tableEl.append('<tr>' + '<td>' + sorted[i].place + '</td>' + '<td>' + sorted[i].user + '</td>' + '<td>' + sorted[i].score + '</td>' + '</tr>')
 };
