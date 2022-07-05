@@ -9,7 +9,7 @@ Click the start button to being the quiz
 Multiple choice, select your answer
 ![https://github.com/Andrew87E/Coding-Quiz/blob/main/assets/images/2022-07-04_11-58_1.jpeg](https://github.com/Andrew87E/Coding-Quiz/blob/main/assets/images/2022-07-04_11-58_1.jpeg)
 
-The quizis timed! watch your timer!
+The quiz is timed! watch your timer!
 ![https://github.com/Andrew87E/Coding-Quiz/blob/main/assets/images/2022-07-04_11-59.jpeg](https://github.com/Andrew87E/Coding-Quiz/blob/main/assets/images/2022-07-04_11-59.jpeg)
 
 You loose 5 seconds for every missed question and you gain 5 points for every right answer! You can see your score and how much time you have left at the top.
