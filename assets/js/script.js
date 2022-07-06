@@ -152,7 +152,7 @@ function endTest() {
     $('#input').show(800);
     questCount = 0;
     $('.start').show(800)
-    questionEl.text('Enter your initials to save your score!');
+    questionEl.text('Enter your initials and press enter to save your score!');
     timeLeft = 0;
 };
 // main timer function controls the timer
@@ -183,4 +183,7 @@ startBtn.on('click', function () {
     $('#input').hide();
     scoreArea.text("Your Score : " + score);
     score = 0;
+    correctCount = 0;
+    incorrectCount = 0;
+    scoreArea.text("Your Score : " + score);
 });
