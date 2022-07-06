@@ -182,4 +182,5 @@ startBtn.on('click', function () {
     questionEl.show()
     $('#input').hide();
     scoreArea.text("Your Score : " + score);
+    score = 0;
 });

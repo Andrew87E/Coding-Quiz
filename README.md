@@ -1,6 +1,9 @@
 # Coding-Quiz
 ![https://github.com/Andrew87E/Coding-Quiz/blob/main/assets/images/ezgif.com-gif-maker.gif?raw=true](https://github.com/Andrew87E/Coding-Quiz/blob/main/assets/images/ezgif.com-gif-maker.gif?raw=true)
 
+## See it in action!
+[Coding Quiz](https://andrew87e.github.io/Coding-Quiz/)
+
 ## Screenshots
 
 Click the start button to being the quiz
@@ -25,6 +28,7 @@ See your score on the scoreboard! Score board automatically sorts all of the sco
     Sorting the data in the scoreboard was by far the biggest challenge of this project.
     
 </details>
+
 
 ## Team
 
